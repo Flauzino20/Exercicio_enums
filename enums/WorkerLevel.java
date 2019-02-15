@@ -5,5 +5,4 @@ public enum WorkerLevel {
 	MID_LEVEL,
 	SENIOR;
 	
-
 }

@@ -14,11 +14,10 @@ public class Worker {
 	private Department department;
 	private List<HourContract> contracts = new ArrayList<>();
 
-	public Worker(String workerName, WorkerLevel workerLevel, Double baseSalary, Department department) {
+	public Worker() {
 }
 
-	public Worker(String name, WorkerLevel level, Double baseSalary, Department department,
-			List<HourContract> contracts) {
+	public Worker(String name, WorkerLevel level, Double baseSalary, Department department) {
 		this.name = name;
 		this.level = level;
 		this.baseSalary = baseSalary;
@@ -73,13 +72,14 @@ public class Worker {
 	public Double income(int year, int month) {
 		Double sum = baseSalary;
 		Calendar cal = Calendar.getInstance(); 
-		for(HourContract c : contracts) {
+		for (HourContract c : contracts) {
 			cal.setTime(c.getDate());
-			int c_month = cal.get(Calendar.MONTH);
-			int c_year = 1+cal.get(Calendar.YEAR);
+			int c_year = cal.get(Calendar.YEAR);
+			int c_month = 1 + cal.get(Calendar.MONTH);
 			if(year == c_year && month == c_month) {
-			sum+=c.totalValue();
+			sum += c.totalValue();
 		}
+			
 	}return sum;
 }
 }
